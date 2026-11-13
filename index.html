@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#05061a">
+  <title>Hoop Frenzy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <canvas id="game" aria-label="Basketball court. Swipe up to shoot."></canvas>
+
+  <button id="btn-pause" class="icon-btn left" aria-label="Pause">&#10074;&#10074;</button>
+  <button id="btn-mute" class="icon-btn right" aria-label="Mute">&#128266;</button>
+
+  <!-- Title -->
+  <div id="screen-title" class="overlay">
+    <div class="panel">
+      <h1 class="logo">HOOP<span>FRENZY</span></h1>
+      <p class="tag">Flick the ball. Sink the shot. Beat the clock.</p>
+      <div class="diff-buttons">
+        <button class="btn easy" data-diff="easy">EASY</button>
+        <button class="btn medium" data-diff="medium">MEDIUM</button>
+        <button class="btn hard" data-diff="hard">HARD</button>
+      </div>
+      <ul class="howto">
+        <li><b>Swipe up</b> to shoot. Longer swipe = more power, direction = aim.</li>
+        <li><b>2 pts</b> a basket &middot; <b>3 pts</b> a swish (nothing but net).</li>
+        <li>Make 3 in a row to go <b>ON FIRE</b> (x2). Last 10 s is <b>FIRE TIME</b> (x2).</li>
+        <li>Hit the <b>target</b> before the buzzer for <b>+15 s</b> bonus time.</li>
+      </ul>
+      <div class="board">
+        <div id="title-tabs" class="tabs">
+          <button data-diff="easy">EASY</button>
+          <button data-diff="medium">MEDIUM</button>
+          <button data-diff="hard">HARD</button>
+        </div>
+        <ol id="title-scores" class="scores"></ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game over -->
+  <div id="screen-over" class="overlay hidden">
+    <div class="panel">
+      <h2 class="over-title">GAME OVER</h2>
+      <div class="final"><span id="final-score">0</span><small>POINTS &middot; <span id="final-diff"></span></small></div>
+      <div class="stats">
+        <div><b id="stat-makes">0/0</b><span>Baskets</span></div>
+        <div><b id="stat-acc">0%</b><span>Accuracy</span></div>
+        <div><b id="stat-streak">0</b><span>Best streak</span></div>
+        <div><b id="stat-swish">0</b><span>Swishes</span></div>
+      </div>
+      <form id="initials-form" class="hidden" autocomplete="off">
+        <p class="new-high">NEW HIGH SCORE!</p>
+        <label for="initials">Enter your initials</label>
+        <div class="row">
+          <input id="initials" maxlength="3" placeholder="AAA" spellcheck="false" autocapitalize="characters" inputmode="text">
+          <button type="submit" class="btn">SAVE</button>
+        </div>
+      </form>
+      <div id="over-board-wrap" class="board">
+        <ol id="over-scores" class="scores"></ol>
+      </div>
+      <div class="row buttons">
+        <button id="btn-again" class="btn medium">PLAY AGAIN</button>
+        <button id="btn-menu" class="btn ghost">MENU</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pause -->
+  <div id="screen-pause" class="overlay hidden">
+    <div class="panel small">
+      <h2>PAUSED</h2>
+      <div class="row buttons">
+        <button id="btn-resume" class="btn medium">RESUME</button>
+        <button id="btn-quit" class="btn ghost">QUIT</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/storage.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/input.js"></script>
+  <script src="js/hoop.js"></script>
+  <script src="js/physics.js"></script>
+  <script src="js/hud.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
